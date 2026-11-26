@@ -1,0 +1,1743 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>欢迎来到杨老版训练场-贵州省普通高中学业水平合格性考试化学模拟试题（二）</title>
+<script src="https://aisearch-task.bj.bcebos.com/static/tailwindcss-3.4.17.js"></script>
+<style>
+  :root {
+    --brand:#1e6fff;
+    --brand-dark:#1557d0;
+    --brand-light:#e8f0ff;
+    --accent:#ff8a3d;
+    --success:#22c55e;
+    --danger:#ef4444;
+    --warn:#f59e0b;
+    --text:#1f2937;
+    --muted:#6b7280;
+    --card-bg:#ffffff;
+    --bg:#f4f7fc;
+  }
+  * { box-sizing:border-box; }
+  body {
+    margin:0;
+    font-family:'PingFang SC','HarmonyOS Sans SC','Microsoft YaHei',-apple-system,BlinkMacSystemFont,sans-serif;
+    background:linear-gradient(135deg,#eef3fb 0%,#f4f7fc 50%,#fdf6ed 100%);
+    color:var(--text);
+    min-height:100vh;
+    font-size:16px;
+    line-height:1.65;
+  }
+  /* 顶部 */
+  .top-bar {
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(30,111,255,0.12);
+    box-shadow:0 2px 12px rgba(30,111,255,0.06);
+  }
+  .top-inner {
+    max-width:1100px; margin:0 auto;
+    padding:14px 20px;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:16px; flex-wrap:wrap;
+  }
+  .paper-title { font-size:18px; font-weight:700; color:var(--brand-dark); }
+  .timer-box {
+    display:flex; align-items:center; gap:8px;
+    background:var(--brand-light); color:var(--brand-dark);
+    padding:8px 16px; border-radius:24px;
+    font-weight:700; font-variant-numeric:tabular-nums;
+    font-size:17px;
+  }
+  .timer-box.warning { background:#fee2e2; color:#b91c1c; animation:pulse 1s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.7} }
+  .action-btns { display:flex; gap:10px; flex-wrap:wrap; }
+  .btn {
+    padding:9px 20px; border-radius:22px; border:none;
+    font-size:15px; font-weight:600; cursor:pointer;
+    transition:all .2s; font-family:inherit;
+  }
+  .btn-primary { background:var(--brand); color:#fff; }
+  .btn-primary:hover { background:var(--brand-dark); transform:translateY(-1px); box-shadow:0 4px 12px rgba(30,111,255,0.3); }
+  .btn-outline { background:#fff; color:var(--brand); border:2px solid var(--brand); }
+  .btn-outline:hover { background:var(--brand-light); }
+  .btn-accent { background:var(--accent); color:#fff; }
+  .btn-accent:hover { background:#e87628; }
+  .btn:disabled { opacity:0.5; cursor:not-allowed; transform:none !important; }
+  
+  /* 主容器 */
+  .container { max-width:1100px; margin:0 auto; padding:24px 20px 60px; }
+  
+  /* 头部信息卡 */
+  .info-card {
+    background:linear-gradient(135deg,var(--brand) 0%,#3b82f6 60%,#60a5fa 100%);
+    color:#fff; border-radius:20px;
+    padding:28px 32px; margin-bottom:24px;
+    box-shadow:0 10px 30px rgba(30,111,255,0.25);
+    position:relative; overflow:hidden;
+  }
+  .info-card::after {
+    content:""; position:absolute; right:-40px; top:-40px;
+    width:200px; height:200px; border-radius:50%;
+    background:rgba(255,255,255,0.08);
+  }
+  .info-card::before {
+    content:""; position:absolute; right:40px; bottom:-60px;
+    width:160px; height:160px; border-radius:50%;
+    background:rgba(255,255,255,0.06);
+  }
+  .info-title { font-size:24px; font-weight:800; margin-bottom:8px; letter-spacing:0.5px; }
+  .info-sub { font-size:15px; opacity:0.9; margin-bottom:6px; }
+  .info-atoms { font-size:13px; opacity:0.85; margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.2); }
+  
+  /* 分区标题 */
+  .section-title {
+    font-size:20px; font-weight:700; color:var(--brand-dark);
+    margin:28px 0 16px; padding-left:14px;
+    border-left:4px solid var(--brand);
+    display:flex; align-items:center; gap:10px;
+  }
+  .section-title .badge {
+    background:var(--brand-light); color:var(--brand-dark);
+    font-size:13px; padding:3px 10px; border-radius:12px;
+    font-weight:600;
+  }
+  
+  /* 题目卡片 */
+  .q-card {
+    background:var(--card-bg);
+    border-radius:14px; padding:20px 22px;
+    margin-bottom:14px;
+    border:2px solid transparent;
+    box-shadow:0 2px 8px rgba(0,0,0,0.04);
+    transition:all .25s;
+  }
+  .q-card:hover { box-shadow:0 4px 16px rgba(30,111,255,0.1); }
+  .q-card.correct { border-color:var(--success); background:#f0fdf4; }
+  .q-card.wrong { border-color:var(--danger); background:#fef2f2; }
+  .q-card.partial { border-color:var(--warn); background:#fffbeb; }
+  .q-head { display:flex; gap:8px; margin-bottom:12px; font-size:16px; line-height:1.7; }
+  .q-num { font-weight:700; color:var(--brand); flex-shrink:0; min-width:28px; }
+  .q-stem { flex:1; font-weight:500; }
+  .opts-grid { display:grid; gap:8px; margin-left:28px; }
+  .opt-item {
+    display:flex; align-items:flex-start; gap:10px;
+    padding:10px 14px; border-radius:10px;
+    border:1.5px solid #e5e7eb; cursor:pointer;
+    transition:all .2s;
+    user-select:none;
+  }
+  .opt-item:hover { border-color:var(--brand); background:var(--brand-light); }
+  .opt-letter {
+    display:inline-flex; align-items:center; justify-content:center;
+    width:26px; height:26px; border-radius:50%; flex-shrink:0;
+    background:#f3f4f6; color:var(--muted);
+    font-weight:700; font-size:13px;
+    transition:all .2s;
+  }
+  .opt-text { flex:1; padding-top:2px; }
+  .opt-item.selected { border-color:var(--brand); background:var(--brand-light); }
+  .opt-item.selected .opt-letter { background:var(--brand); color:#fff; }
+  .opt-item.right { border-color:var(--success); background:#dcfce7; }
+  .opt-item.right .opt-letter { background:var(--success); color:#fff; }
+  .opt-item.wrong-sel { border-color:var(--danger); background:#fee2e2; }
+  .opt-item.wrong-sel .opt-letter { background:var(--danger); color:#fff; }
+  .opt-item.disabled { cursor:default; pointer-events:none; }
+  .hidden { display:none !important; }
+  
+  /* 反馈 */
+  .q-feedback {
+    margin-top:12px; margin-left:28px;
+    padding:12px 16px; border-radius:10px;
+    font-size:14.5px; line-height:1.7;
+    display:flex; gap:10px; align-items:flex-start;
+  }
+  .q-card.correct .q-feedback { background:#ecfdf5; color:#065f46; }
+  .q-card.wrong .q-feedback { background:#fef2f2; color:#991b1b; }
+  .fb-mark { font-weight:700; font-size:16px; flex-shrink:0; padding-top:1px; }
+  .q-card.correct .fb-mark::before { content:"✓ 正确"; color:var(--success); }
+  .q-card.wrong .fb-mark::before { content:"✗ 错误"; color:var(--danger); }
+  
+  /* 填空题 */
+  .blank-row {
+    display:flex; align-items:center; gap:10px;
+    margin-left:28px; margin-bottom:10px; flex-wrap:wrap;
+  }
+  .blank-label { font-size:15px; min-width:200px; flex-shrink:0; }
+  .blank-input {
+    flex:1; min-width:180px; max-width:340px;
+    padding:8px 14px; border:1.5px solid #d1d5db;
+    border-radius:8px; font-size:15px; font-family:inherit;
+    transition:border-color .2s;
+  }
+  .blank-input:focus { outline:none; border-color:var(--brand); box-shadow:0 0 0 3px rgba(30,111,255,0.1); }
+  .blank-input.ok { border-color:var(--success); background:#f0fdf4; }
+  .blank-input.no { border-color:var(--danger); background:#fef2f2; }
+  .blank-input.disabled { background:#f3f4f6; cursor:not-allowed; }
+  .blank-fb { font-size:13px; font-weight:600; min-width:40px; }
+  .blank-fb.ok { color:var(--success); }
+  .blank-fb.ok::before { content:"✓"; }
+  .blank-fb.no { color:var(--danger); }
+  .blank-fb.no::before { content:"参考答案："; color:var(--danger); font-weight:500;}
+  .fill-answer {
+    margin:12px 0 0 28px; padding:12px 16px;
+    background:#eff6ff; border-radius:10px; font-size:14.5px;
+    border-left:3px solid var(--brand);
+  }
+  .fill-ans-title { font-weight:700; color:var(--brand-dark); margin-bottom:6px; }
+  .fill-ans-body { color:var(--text); line-height:1.8; }
+  .fill-ans-body .ans-row { margin-bottom:4px; }
+  
+  /* 结果面板 */
+  .result-panel {
+    position:fixed; top:0; left:0; right:0; bottom:0; z-index:100;
+    background:rgba(15,23,42,0.6); backdrop-filter:blur(6px);
+    display:flex; align-items:center; justify-content:center;
+    padding:20px;
+  }
+  .result-card {
+    background:#fff; border-radius:24px;
+    padding:36px 40px; max-width:460px; width:100%;
+    box-shadow:0 20px 60px rgba(0,0,0,0.3);
+    text-align:center;
+    animation:pop .3s cubic-bezier(.2,.8,.2,1);
+  }
+  @keyframes pop { from{transform:scale(0.8);opacity:0} to{transform:scale(1);opacity:1} }
+  .score-circle {
+    width:140px; height:140px; border-radius:50%;
+    margin:0 auto 20px; display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    font-weight:800;
+  }
+  .score-circle.pass { background:linear-gradient(135deg,#22c55e,#16a34a); color:#fff; }
+  .score-circle.fail { background:linear-gradient(135deg,#ef4444,#dc2626); color:#fff; }
+  .score-num { font-size:44px; line-height:1; }
+  .score-unit { font-size:15px; margin-top:2px; opacity:0.9; }
+  .result-title { font-size:22px; font-weight:700; margin-bottom:6px; }
+  .result-sub { font-size:14px; color:var(--muted); margin-bottom:20px; }
+  .stat-row {
+    display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px;
+    margin-bottom:22px;
+  }
+  .stat-item {
+    background:#f9fafb; padding:10px; border-radius:10px;
+  }
+  .stat-val { font-size:20px; font-weight:700; color:var(--brand); }
+  .stat-lab { font-size:12px; color:var(--muted); margin-top:2px; }
+  .result-actions { display:flex; gap:10px; justify-content:center; }
+  
+  /* 题号导航 */
+  .nav-panel {
+    position:fixed; right:20px; bottom:20px; z-index:40;
+    background:#fff; border-radius:14px; padding:14px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.12);
+    max-width:200px;
+  }
+  .nav-title { font-size:12px; font-weight:700; color:var(--muted); margin-bottom:8px; letter-spacing:1px; }
+  .nav-grid {
+    display:grid; grid-template-columns:repeat(7,1fr); gap:4px;
+  }
+  .nav-btn {
+    width:24px; height:24px; border-radius:6px;
+    border:1px solid #e5e7eb; background:#fff;
+    font-size:11px; font-weight:600; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    font-family:inherit; color:var(--muted);
+    transition:all .15s;
+  }
+  .nav-btn:hover { border-color:var(--brand); color:var(--brand); }
+  .nav-btn.done { background:var(--brand-light); color:var(--brand); border-color:var(--brand); }
+  .nav-btn.correct-n { background:#dcfce7; color:#16a34a; border-color:#22c55e; }
+  .nav-btn.wrong-n { background:#fee2e2; color:#dc2626; border-color:#ef4444; }
+  .nav-toggle {
+    display:none;
+    position:fixed; right:16px; bottom:16px; z-index:41;
+    width:48px; height:48px; border-radius:50%;
+    background:var(--brand); color:#fff; border:none;
+    font-size:20px; cursor:pointer;
+    box-shadow:0 4px 12px rgba(30,111,255,0.35);
+  }
+  @media(max-width:900px){
+    .nav-panel { display:none; right:10px; bottom:70px; }
+    .nav-panel.show { display:block; }
+    .nav-toggle { display:flex; align-items:center; justify-content:center; }
+    .info-card { padding:20px; }
+    .info-title { font-size:19px; }
+    .opts-grid, .q-feedback, .blank-row, .fill-answer { margin-left:0; }
+    .blank-label { min-width:100%; }
+    .container { padding:16px 14px 80px; }
+    .paper-title { font-size:15px; }
+  }
+.chem-fig img,.chem-fig svg{max-width:100%;height:auto;}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}sub{bottom:-0.25em;}sup{top:-0.5em;}</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-inner">
+    <div class="paper-title">欢迎来到杨老版训练场📘 贵州省普通高中学业水平合格性考试化学模拟试题（二）</div>
+    <div style="display:flex; gap:12px; align-items:center;">
+      <div class="timer-box" id="timer">
+        <span>⏱</span>
+        <span id="time-text">60:00</span>
+      </div>
+      <div class="action-btns">
+        <button class="btn btn-outline" id="btn-reset">🔄 重置</button>
+        <button class="btn btn-primary" id="btn-submit">📝 交卷判分</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="info-card">
+    <div class="info-title">贵州省普通高中学业水平合格性考试化学模拟试题（二）</div>
+    <div class="info-sub">满分 100 分　考试时间 60 分钟</div>
+    <div class="info-sub">选择题 28 题 × 3 分 = 84 分　|　非选择题 2 题 = 16 分</div>
+    <div class="info-atoms">可能用到的相对原子质量：H 1、C 12、N 14、O 16、Na 23、Mg 24、Al 27、S 32、Cl 35.5、Fe 56</div>
+  </div>
+
+  <div class="section-title">第Ⅰ卷　选择题 <span class="badge">共84分</span></div>
+  
+        <div class="q-card" id="qcard-1" data-q="1" data-ans="C">
+          <div class="q-head">
+            <span class="q-num">1.</span>
+            <span class="q-stem">化学与环境保护、能源利用密切相关。下列说法不正确的是（3分）</span>
+          </div>
+          <div class="opts-grid">
+            
+            <label class="opt-item" data-q="1" data-letter="A">
+              <input type="radio" name="q1" value="A" class="opt-radio hidden">
+              <span class="opt-letter">A</span>
+              <span class="opt-text">开发利用太阳能、风能等新能源有利于减少碳排放</span>
+            </label>
+            <label class="opt-item" data-q="1" data-letter="B">
+              <input type="radio" name="q1" value="B" class="opt-radio hidden">
+              <span class="opt-letter">B</span>
+              <span class="opt-text">燃煤中加入石灰石可减少SO<sub>2</sub>的排放</span>
+            </label>
+            <label class="opt-item" data-q="1" data-letter="C">
+              <input type="radio" name="q1" value="C" class="opt-radio hidden">
+              <span class="opt-letter">C</span>
+              <span class="opt-text">生活污水可直接排入河流，不会造成污染</span>
+            </label>
+            <label class="opt-item" data-q="1" data-letter="D">
+              <input type="radio" name="q1" value="D" class="opt-radio hidden">
+              <span class="opt-letter">D</span>
+              <span class="opt-text">合成氨工业对解决人类的粮食问题具有重要意义</span>
+            </label>
+          </div>
+          <div class="q-feedback hidden" id="fb-1">
+            <div class="fb-mark"></div>
+            <div class="fb-explain"></div>
+          </div>
+        </div>
+        
+
+        <div class="q-card" id="qcard-2" data-q="2" data-ans="C">
+          <div class="q-head">
+            <span class="q-num">2.</span>
+            <span class="q-stem">下列物质属于纯净物的是（3分）</span>
+          </div>
+          <div class="opts-grid">
+            
+            <label class="opt-item" data-q="2" data-letter="A">
+              <input type="radio" name="q2" value="A" class="opt-radio hidden">
+              <span class="opt-letter">A</span>
+              <span class="opt-text">空气</span>
+            </label>
+            <label class="opt-item" data-q="2" data-letter="B">
+              <input type="radio" name="q2" value="B" class="opt-radio hidden">
+              <span class="opt-letter">B</span>
+              <span class="opt-text">盐酸</span>
+            </label>
+            <label class="opt-item" data-q="2" data-letter="C">
+              <input type="radio" name="q2" value="C" class="opt-radio hidden">
+              <span class="opt-letter">C</span>
+              <span class="opt-text">液氯</span>
+            </label>
+            <label class="opt-item" data-q="2" data-letter="D">
+              <input type="radio" name="q2" value="D" class="opt-radio hidden">
+              <span class="opt-letter">D</span>
+              <span class="opt-text">漂白粉</span>
+            </label>
+          </div>
+          <div class="q-feedback hidden" id="fb-2">
+            <div class="fb-mark"></div>
+            <div class="fb-explain"></div>
+          </div>
+        </div>
+        
+
+        <div class="q-card" id="qcard-3" data-q="3" data-ans="B">
+          <div class="q-head">
+            <span class="q-num">3.</span>
+            <span class="q-stem">下列仪器与用途对应正确的是（3分）</span>
+          </div>
+          <div class="opts-grid">
+            
+            <label class="opt-item" data-q="3" data-letter="A">
+              <input type="radio" name="q3" value="A" class="opt-radio hidden">
+              <span class="opt-letter">A</span>
+              <span class="opt-text">容量瓶——用于加热</span>
+            </label>
+            <label class="opt-item" data-q="3" data-letter="B">
+              <input type="radio" name="q3" value="B" class="opt-radio hidden">
+              <span class="opt-letter">B</span>
+              <span class="opt-text">量筒——用于量取一定体积的液体</span>
+            </label>
+            <label class="opt-item" data-q="3" data-letter="C">
+              <input type="radio" name="q3" value="C" class="opt-radio hidden">
+              <span class="opt-letter">C</span>
+              <span class="opt-text">烧杯——用于直接加热</span>
+            </label>
+            <label class="opt-item" data-q="3" data-letter="D">
+              <input type="radio" name="q3" value="D" class="opt-radio hidden">
+              <span class="opt-letter">D</span>
+              <span class="opt-text">分液漏斗——用于过滤</span>
+            </label>
+          </div>
+          <div class="q-feedback hidden" id="fb-3">
+            <div class="fb-mark"></div>
+            <div class="fb-explain"></div>
+          </div>
+        </div>
+        
+
+        <div class="q-card" id="qcard-4" data-q="4" data-ans="A">
+          <div class="q-head">
+            <span class="q-num">4.</span>
+            <span class="q-stem">下列物质中与金刚石互为同素异形体的是（3分）</span>
+          </div>
+          <div class="opts-grid">
+            
+            <label class="opt-item" data-q="4" data-letter="A">
+              <input type="radio" name="q4" value="A" class="opt-radio hidden">
+              <span class="opt-letter">A</span>
+              <span class="opt-text">石墨</span>
+            </label>
+            <label class="opt-item" data-q="4" data-letter="B">
+              <input type="radio" name="q4" value="B" class="opt-radio hidden">
+              <span class="opt-letter">B</span>
+              <span class="opt-text">二氧化碳</span>
+            </label>
+            <label class="opt-item" data-q="4" data-letter="C">
+              <input type="radio" name="q4" value="C" class="opt-radio hidden">
+              <span class="opt-letter">C</span>
+              <span class="opt-text">石灰石</span>
+            </label>
+            <label class="opt-item" data-q="4" data-letter="D">
+              <input type="radio" name="q4" value="D" class="opt-radio hidden">
+              <span class="opt-letter">D</span>
+              <span class="opt-text">硅</span>
+            </label>
+          </div>
+          <div class="q-feedback hidden" id="fb-4">
+            <div class="fb-mark"></div>
+            <div class="fb-explain"></div>
+          </div>
+        </div>
+        
+
+        <div class="q-card" id="qcard-5" data-q="5" data-ans="D">
+          <div class="q-head">
+            <span class="q-num">5.</span>
+            <span class="q-stem">合金在生产和生活中应用广泛。下列关于合金的说法不正确的是（3分）</span>
+          </div>
+          <div class="opts-grid">
+            
+            <label class="opt-item" data-q="5" data-letter="A">
+              <input type="radio" name="q5" value="A" class="opt-radio hidden">
+              <span class="opt-letter">A</span>
+              <span class="opt-text">合金的熔点一般比组成它的纯金属低</span>
+            </label>
+            <label class="opt-item" data-q="5" data-letter="B">
+              <input type="radio" name="q5" value="B" class="opt-radio hidden">
+              <span class="opt-letter">B</span>
+              <span class="opt-text">合金的硬度一般比组成它的纯金属大</span>
+            </label>
+            <label class="opt-item" data-q="5" data-letter="C">
+              <input type="radio" name="q5" value="C" class="opt-radio hidden">
+              <span class="opt-letter">C</span>
+              <span class="opt-text">生铁和钢都是铁的合金</span>
+            </label>
+            <label class="opt-item" data-q="5" data-letter="D">
+              <input type="radio" name="q5" value="D" class="opt-radio hidden">
+              <span class="opt-letter">D</span>
+              <span class="opt-text">合金一定是纯净物</span>
+            </label>
+          </div>
+          <div class="q-feedback hidden" id="fb-5">
+            <div class="fb-mark"></div>
+            <div class="fb-explain"></div>
+          </div>
+        </div>
+        
+
+        <div class="q-card" id="qcard-6" data-q="6" data-ans="D">
+          <div class="q-head">
+            <span class="q-num">6.</span>
+            <span class="q-stem">下列说法不正确的是（3分）</span>
+          </div>
+          <div class="opts-grid">
+            
+            <label class="opt-item" data-q="6" data-letter="A">
+              <input type="radio" name="q6" value="A" class="opt-radio hidden">
+              <span class="opt-letter">A</span>
+              <span class="opt-text">油脂是人体重要的供能物质</span>
+            </label>
+            <label class="opt-item" data-q="6" data-letter="B">
+              <input type="radio" name="q6" value="B" class="opt-radio hidden">
+              <span class="opt-letter">B</span>
+              <span class="opt-text">蛋白质水解的最终产物是氨基酸</span>
+            </label>
+            <label class="opt-item" data-q="6" data-letter="C">
+              <input type="radio" name="q6" value="C" class="opt-radio hidden">
+              <span class="opt-letter">C</span>
+              <span class="opt-text">淀粉和纤维素都属于糖类</span>
+            </label>
+            <label class="opt-item" data-q="6" data-letter="D">
+              <input type="radio" name="q6" value="D" class="opt-radio hidden">
+              <span class="opt-letter">D</span>
+              <span class="opt-text">人体所需的维生素可以大量储存于体内</span>
+            </label>
+          </div>
+          <div class="q-feedback hidden" id="fb-6">
+            <div class="fb-mark"></div>
+            <div class="fb-explain"></div>
+          </div>
+        </div>
+        
+
+        <div class="q-card" id="qcard-7" data-q="7" data-ans="A">
+          <div class="q-head">
+            <span class="q-num">7.</span>
+            <span class="q-stem">设NA为阿伏加德罗常数的值。下列说法正确的是（3分）</span>
+          </div>
+          <div class="opts-grid">
+            
+            <label class="opt-item" data-q="7" data-letter="A">
+              <input type="radio" name="q7" value="A" class="opt-radio hidden">
+              <span class="opt-letter">A</span>
+              <span class="opt-text">1 mol CO<sub>2</sub>中含有的氧原子数为2NA</span>
+            </label>
+            <label class="opt-item" data-q="7" data-letter="B">
+              <input type="radio" name="q7" value="B" class="opt-radio hidden">
+              <span class="opt-letter">B</span>
+              <span class="opt-text">1 mol Na中含有的电子数为NA</span>
+            </label>
+            <label class="opt-item" data-q="7" data-letter="C">
+              <input type="radio" name="q7" value="C" class="opt-radio hidden">
+              <span class="opt-letter">C</span>
+              <span class="opt-text">标准状况下，22.4 L NaCl中含有的Na<sup>+</sup>数为NA</span>
+            </label>
+            <label class="opt-item" data-q="7" data-letter="D">
+              <input type="radio" name="q7" value="D" class="opt-radio hidden">
+              <span class="opt-letter">D</span>
+              <span class="opt-text">1 mol H<sub>2</sub>SO<sub>4</sub>中含有的氢原子数为NA</span>
+            </label>
+          </div>
+          <div class="q-feedback hidden" id="fb-7">
+            <div class="fb-mark"></div>
+            <div class="fb-explain"></div>
+          </div>
+        </div>
+        
+
+        <div class="q-card" id="qcard-8" data-q="8" data-ans="A">
+          <div class="q-head">
+            <span class="q-num">8.</span>
+            <span class="q-stem">检验某溶液中是否含有Fe<sup>3+</sup>，可选用的试剂是（3分）</span>
+          </div>
+          <div class="opts-grid">
+            
+            <label class="opt-item" data-q="8" data-letter="A">
+              <input type="radio" name="q8" value="A" class="opt-radio hidden">
+              <span class="opt-letter">A</span>
+              <span class="opt-text">KSCN溶液</span>
+            </label>
+            <label class="opt-item" data-q="8" data-letter="B">
+              <input type="radio" name="q8" value="B" class="opt-radio hidden">
+              <span class="opt-letter">B</span>
+              <span class="opt-text">NaOH溶液</span>
+            </label>
+            <label class="opt-item" data-q="8" data-letter="C">
+              <input type="radio" name="q8" value="C" class="opt-radio hidden">
+              <span class="opt-letter">C</span>
+              <span class="opt-text">石蕊试液</span>
+            </label>
+            <label class="opt-item" data-q="8" data-letter="D">
+              <input type="radio" name="q8" value="D" class="opt-radio hidden">
+              <span class="opt-letter">D</span>
+              <span class="opt-text">酚酞试液</span>
+            </label>
+          </div>
+          <div class="q-feedback hidden" id="fb-8">
+            <div class="fb-mark"></div>
+            <div class="fb-explain"></div>
+          </div>
+        </div>
+        
+
+        <div class="q-card" id="qcard-9" data-q="9" data-ans="B">
+          <div class="q-head">
+            <span class="q-num">9.</span>
+            <span class="q-stem">下列反应属于置换反应的是（3分）</span>
+          </div>
+          <div class="opts-grid">
+            
+            <label class="opt-item" data-q="9" data-letter="A">
+              <input type="radio" name="q9" value="A" class="opt-radio hidden">
+              <span class="opt-letter">A</span>
+              <span class="opt-text">2H<sub>2</sub>O<sub>2</sub> = 2H<sub>2</sub>O + O<sub>2</sub>↑</span>
+            </label>
+            <label class="opt-item" data-q="9" data-letter="B">
+              <input type="radio" name="q9" value="B" class="opt-radio hidden">
+              <span class="opt-letter">B</span>
+              <span class="opt-text">Fe + CuSO<sub>4</sub> = FeSO<sub>4</sub> + Cu</span>
+            </label>
+            <label class="opt-item" data-q="9" data-letter="C">
+              <input type="radio" name="q9" value="C" class="opt-radio hidden">
+              <span class="opt-letter">C</span>
+              <span class="opt-text">HCl + NaOH = NaCl + H<sub>2</sub>O</span>
+            </label>
+            <label class="opt-item" data-q="9" data-letter="D">
+              <input type="radio" name="q9" value="D" class="opt-radio hidden">
+              <span class="opt-letter">D</span>
+              <span class="opt-text">CaCO<sub>3</sub> --高温--> CaO + CO<sub>2</sub>↑</span>
+            </label>
+          </div>
+          <div class="q-feedback hidden" id="fb-9">
+            <div class="fb-mark"></div>
+            <div class="fb-explain"></div>
+          </div>
+        </div>
+        
+
+        <div class="q-card" id="qcard-10" data-q="10" data-ans="A">
+          <div class="q-head">
+            <span class="q-num">10.</span>
+            <span class="q-stem">下列离子方程式书写正确的是（3分）</span>
+          </div>
+          <div class="opts-grid">
+            
+            <label class="opt-item" data-q="10" data-letter="A">
+              <input type="radio" name="q10" value="A" class="opt-radio hidden">
+              <span class="opt-letter">A</span>
+              <span class="opt-text">氢氧化钠溶液与盐酸反应：H<sup>+</sup> + OH<sup>-</sup> = H<sub>2</sub>O</span>
+            </label>
+            <label class="opt-item" data-q="10" data-letter="B">
+              <input type="radio" name="q10" value="B" class="opt-radio hidden">
+              <span class="opt-letter">B</span>
+              <span class="opt-text">铁与稀盐酸反应：<sup>2</sup>Fe + 6H<sup>+</sup> = 2Fe<sup>3+</sup> + 3H<sub>2</sub>↑</span>
+            </label>
+            <label class="opt-item" data-q="10" data-letter="C">
+              <input type="radio" name="q10" value="C" class="opt-radio hidden">
+              <span class="opt-letter">C</span>
+              <span class="opt-text">碳酸钙与盐酸反应：CO<sub>3</sub><sup>2-</sup> + 2H<sup>+</sup> = H<sub>2</sub>O + CO<sub>2</sub>↑</span>
+            </label>
+            <label class="opt-item" data-q="10" data-letter="D">
+              <input type="radio" name="q10" value="D" class="opt-radio hidden">
+              <span class="opt-letter">D</span>
+              <span class="opt-text">铜与稀硫酸反应：Cu + 2H<sup>+</sup> = Cu<sup>2+</sup> + H<sub>2</sub>↑</span>
+            </label>
+          </div>
+          <div class="q-feedback hidden" id="fb-10">
+            <div class="fb-mark"></div>
+            <div class="fb-explain"></div>
+          </div>
+        </div>
+        
+
+        <div class="q-card" id="qcard-11" data-q="11" data-ans="A">
+          <div class="q-head">
+            <span class="q-num">11.</span>
+            <span class="q-stem">下列气体中，属于空气污染物且排放过多会形成酸雨的是（3分）</span>
+          </div>
+          <div class="opts-grid">
+            
+            <label class="opt-item" data-q="11" data-letter="A">
+              <input type="radio" name="q11" value="A" class="opt-radio hidden">
+              <span class="opt-letter">A</span>
+              <span class="opt-text">SO<sub>2</sub></span>
+            </label>
+            <label class="opt-item" data-q="11" data-letter="B">
+              <input type="radio" name="q11" value="B" class="opt-radio hidden">
+              <span class="opt-letter">B</span>
+              <span class="opt-text">N<sub>2</sub></span>
+            </label>
+            <label class="opt-item" data-q="11" data-letter="C">
+              <input type="radio" name="q11" value="C" class="opt-radio hidden">
+              <span class="opt-letter">C</span>
+              <span class="opt-text">O<sub>2</sub></span>
+            </label>
+            <label class="opt-item" data-q="11" data-letter="D">
+              <input type="radio" name="q11" value="D" class="opt-radio hidden">
+              <span class="opt-letter">D</span>
+              <span class="opt-text">CO<sub>2</sub></span>
+            </label>
+          </div>
+          <div class="q-feedback hidden" id="fb-11">
+            <div class="fb-mark"></div>
+            <div class="fb-explain"></div>
+          </div>
+        </div>
+        
+
+        <div class="q-card" id="qcard-12" data-q="12" data-ans="A">
+          <div class="q-head">
+            <span class="q-num">12.</span>
+            <span class="q-stem">核素 <sup>14</sup>C 的核内质子数为（3分）</span>
+          </div>
+          <div class="opts-grid">
+            
+            <label class="opt-item" data-q="12" data-letter="A">
+              <input type="radio" name="q12" value="A" class="opt-radio hidden">
+              <span class="opt-letter">A</span>
+              <span class="opt-text">6</span>
+            </label>
+            <label class="opt-item" data-q="12" data-letter="B">
+              <input type="radio" name="q12" value="B" class="opt-radio hidden">
+              <span class="opt-letter">B</span>
+              <span class="opt-text">8</span>
+            </label>
+            <label class="opt-item" data-q="12" data-letter="C">
+              <input type="radio" name="q12" value="C" class="opt-radio hidden">
+              <span class="opt-letter">C</span>
+              <span class="opt-text">14</span>
+            </label>
+            <label class="opt-item" data-q="12" data-letter="D">
+              <input type="radio" name="q12" value="D" class="opt-radio hidden">
+              <span class="opt-letter">D</span>
+              <span class="opt-text">20</span>
+            </label>
+          </div>
+          <div class="q-feedback hidden" id="fb-12">
+            <div class="fb-mark"></div>
+            <div class="fb-explain"></div>
+          </div>
+        </div>
+        
+
+        <div class="q-card" id="qcard-13" data-q="13" data-ans="C">
+          <div class="q-head">
+            <span class="q-num">13.</span>
+            <span class="q-stem">下列物质属于共价化合物的是（3分）</span>
+          </div>
+          <div class="opts-grid">
+            
+            <label class="opt-item" data-q="13" data-letter="A">
+              <input type="radio" name="q13" value="A" class="opt-radio hidden">
+              <span class="opt-letter">A</span>
+              <span class="opt-text">NaCl</span>
+            </label>
+            <label class="opt-item" data-q="13" data-letter="B">
+              <input type="radio" name="q13" value="B" class="opt-radio hidden">
+              <span class="opt-letter">B</span>
+              <span class="opt-text">NaOH</span>
+            </label>
+            <label class="opt-item" data-q="13" data-letter="C">
+              <input type="radio" name="q13" value="C" class="opt-radio hidden">
+              <span class="opt-letter">C</span>
+              <span class="opt-text">H<sub>2</sub>O</span>
+            </label>
+            <label class="opt-item" data-q="13" data-letter="D">
+              <input type="radio" name="q13" value="D" class="opt-radio hidden">
+              <span class="opt-letter">D</span>
+              <span class="opt-text">Na<sub>2</sub>O</span>
+            </label>
+          </div>
+          <div class="q-feedback hidden" id="fb-13">
+            <div class="fb-mark"></div>
+            <div class="fb-explain"></div>
+          </div>
+        </div>
+        
+
+        <div class="q-card" id="qcard-14" data-q="14" data-ans="C">
+          <div class="q-head">
+            <span class="q-num">14.</span>
+            <span class="q-stem">下列关于海水资源开发利用的说法不正确的是（3分）</span>
+          </div>
+          <div class="opts-grid">
+            
+            <label class="opt-item" data-q="14" data-letter="A">
+              <input type="radio" name="q14" value="A" class="opt-radio hidden">
+              <span class="opt-letter">A</span>
+              <span class="opt-text">海水淡化可采用蒸馏法</span>
+            </label>
+            <label class="opt-item" data-q="14" data-letter="B">
+              <input type="radio" name="q14" value="B" class="opt-radio hidden">
+              <span class="opt-letter">B</span>
+              <span class="opt-text">从海带中可提取碘</span>
+            </label>
+            <label class="opt-item" data-q="14" data-letter="C">
+              <input type="radio" name="q14" value="C" class="opt-radio hidden">
+              <span class="opt-letter">C</span>
+              <span class="opt-text">海水可以直接作为饮用水</span>
+            </label>
+            <label class="opt-item" data-q="14" data-letter="D">
+              <input type="radio" name="q14" value="D" class="opt-radio hidden">
+              <span class="opt-letter">D</span>
+              <span class="opt-text">海水提镁、提溴具有重要的工业价值</span>
+            </label>
+          </div>
+          <div class="q-feedback hidden" id="fb-14">
+            <div class="fb-mark"></div>
+            <div class="fb-explain"></div>
+          </div>
+        </div>
+        
+
+        <div class="q-card" id="qcard-15" data-q="15" data-ans="A">
+          <div class="q-head">
+            <span class="q-num">15.</span>
+            <span class="q-stem">下列物质中属于天然高分子化合物的是（3分）</span>
+          </div>
+          <div class="opts-grid">
+            
+            <label class="opt-item" data-q="15" data-letter="A">
+              <input type="radio" name="q15" value="A" class="opt-radio hidden">
+              <span class="opt-letter">A</span>
+              <span class="opt-text">淀粉</span>
+            </label>
+            <label class="opt-item" data-q="15" data-letter="B">
+              <input type="radio" name="q15" value="B" class="opt-radio hidden">
+              <span class="opt-letter">B</span>
+              <span class="opt-text">乙烯</span>
+            </label>
+            <label class="opt-item" data-q="15" data-letter="C">
+              <input type="radio" name="q15" value="C" class="opt-radio hidden">
+              <span class="opt-letter">C</span>
+              <span class="opt-text">乙醇</span>
+            </label>
+            <label class="opt-item" data-q="15" data-letter="D">
+              <input type="radio" name="q15" value="D" class="opt-radio hidden">
+              <span class="opt-letter">D</span>
+              <span class="opt-text">葡萄糖</span>
+            </label>
+          </div>
+          <div class="q-feedback hidden" id="fb-15">
+            <div class="fb-mark"></div>
+            <div class="fb-explain"></div>
+          </div>
+        </div>
+        
+
+        <div class="q-card" id="qcard-16" data-q="16" data-ans="B">
+          <div class="q-head">
+            <span class="q-num">16.</span>
+            <span class="q-stem">下列物质能使酸性高锰酸钾溶液褪色的是（3分）</span>
+          </div>
+          <div class="opts-grid">
+            
+            <label class="opt-item" data-q="16" data-letter="A">
+              <input type="radio" name="q16" value="A" class="opt-radio hidden">
+              <span class="opt-letter">A</span>
+              <span class="opt-text">甲烷</span>
+            </label>
+            <label class="opt-item" data-q="16" data-letter="B">
+              <input type="radio" name="q16" value="B" class="opt-radio hidden">
+              <span class="opt-letter">B</span>
+              <span class="opt-text">乙烯</span>
+            </label>
+            <label class="opt-item" data-q="16" data-letter="C">
+              <input type="radio" name="q16" value="C" class="opt-radio hidden">
+              <span class="opt-letter">C</span>
+              <span class="opt-text">乙烷</span>
+            </label>
+            <label class="opt-item" data-q="16" data-letter="D">
+              <input type="radio" name="q16" value="D" class="opt-radio hidden">
+              <span class="opt-letter">D</span>
+              <span class="opt-text">四氯化碳</span>
+            </label>
+          </div>
+          <div class="q-feedback hidden" id="fb-16">
+            <div class="fb-mark"></div>
+            <div class="fb-explain"></div>
+          </div>
+        </div>
+        
+
+        <div class="q-card" id="qcard-17" data-q="17" data-ans="C">
+          <div class="q-head">
+            <span class="q-num">17.</span>
+            <span class="q-stem">下列关于铝及其化合物的说法正确的是（3分）</span>
+          </div>
+          <div class="opts-grid">
+            
+            <label class="opt-item" data-q="17" data-letter="A">
+              <input type="radio" name="q17" value="A" class="opt-radio hidden">
+              <span class="opt-letter">A</span>
+              <span class="opt-text">铝是地壳中含量最多的元素</span>
+            </label>
+            <label class="opt-item" data-q="17" data-letter="B">
+              <input type="radio" name="q17" value="B" class="opt-radio hidden">
+              <span class="opt-letter">B</span>
+              <span class="opt-text">铝与氢氧化钠溶液不反应</span>
+            </label>
+            <label class="opt-item" data-q="17" data-letter="C">
+              <input type="radio" name="q17" value="C" class="opt-radio hidden">
+              <span class="opt-letter">C</span>
+              <span class="opt-text">氧化铝的熔点很高，可用作耐火材料</span>
+            </label>
+            <label class="opt-item" data-q="17" data-letter="D">
+              <input type="radio" name="q17" value="D" class="opt-radio hidden">
+              <span class="opt-letter">D</span>
+              <span class="opt-text">铝制餐具可长时间盛放酸性或碱性食物</span>
+            </label>
+          </div>
+          <div class="q-feedback hidden" id="fb-17">
+            <div class="fb-mark"></div>
+            <div class="fb-explain"></div>
+          </div>
+        </div>
+        
+
+        <div class="q-card" id="qcard-18" data-q="18" data-ans="C">
+          <div class="q-head">
+            <span class="q-num">18.</span>
+            <span class="q-stem">下列物质中能发生加成反应的是（3分）</span>
+          </div>
+          <div class="opts-grid">
+            
+            <label class="opt-item" data-q="18" data-letter="A">
+              <input type="radio" name="q18" value="A" class="opt-radio hidden">
+              <span class="opt-letter">A</span>
+              <span class="opt-text">CH<sub>4</sub></span>
+            </label>
+            <label class="opt-item" data-q="18" data-letter="B">
+              <input type="radio" name="q18" value="B" class="opt-radio hidden">
+              <span class="opt-letter">B</span>
+              <span class="opt-text">CH<sub>3</sub>CH<sub>3</sub></span>
+            </label>
+            <label class="opt-item" data-q="18" data-letter="C">
+              <input type="radio" name="q18" value="C" class="opt-radio hidden">
+              <span class="opt-letter">C</span>
+              <span class="opt-text">CH<sub>2</sub>=CH<sub>2</sub></span>
+            </label>
+            <label class="opt-item" data-q="18" data-letter="D">
+              <input type="radio" name="q18" value="D" class="opt-radio hidden">
+              <span class="opt-letter">D</span>
+              <span class="opt-text">H<sub>2</sub>O</span>
+            </label>
+          </div>
+          <div class="q-feedback hidden" id="fb-18">
+            <div class="fb-mark"></div>
+            <div class="fb-explain"></div>
+          </div>
+        </div>
+        
+
+        <div class="q-card" id="qcard-19" data-q="19" data-ans="A">
+          <div class="q-head">
+            <span class="q-num">19.</span>
+            <span class="q-stem">下列物质在运输时应张贴"腐蚀品"标志的是（3分）</span>
+          </div>
+          <div class="q-img" style="margin:8px 0;display:inline-block;margin-right:15px;"><svg width="80" height="100" viewBox="0 0 80 100" xmlns="http://www.w3.org/2000/svg">
+  <rect x="5" y="5" width="70" height="90" fill="#fff" stroke="#722ed1" stroke-width="2"/>
+  <rect x="10" y="10" width="60" height="25" fill="#722ed1"/>
+  <text x="40" y="27" font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">腐蚀品</text>
+  <text x="40" y="65" font-size="24" text-anchor="middle" fill="#722ed1">⚠</text>
+</svg></div><span style="vertical-align:top;display:inline-block;padding-top:30px;color:#666;font-size:12px;">图A  腐蚀品标志</span><div class="opts-grid">
+            
+            <label class="opt-item" data-q="19" data-letter="A">
+              <input type="radio" name="q19" value="A" class="opt-radio hidden">
+              <span class="opt-letter">A</span>
+              <span class="opt-text">浓硫酸</span>
+            </label>
+            <label class="opt-item" data-q="19" data-letter="B">
+              <input type="radio" name="q19" value="B" class="opt-radio hidden">
+              <span class="opt-letter">B</span>
+              <span class="opt-text">汽油</span>
+            </label>
+            <label class="opt-item" data-q="19" data-letter="C">
+              <input type="radio" name="q19" value="C" class="opt-radio hidden">
+              <span class="opt-letter">C</span>
+              <span class="opt-text">氮气</span>
+            </label>
+            <label class="opt-item" data-q="19" data-letter="D">
+              <input type="radio" name="q19" value="D" class="opt-radio hidden">
+              <span class="opt-letter">D</span>
+              <span class="opt-text">乙醇</span>
+            </label>
+          </div>
+          <div class="q-feedback hidden" id="fb-19">
+            <div class="fb-mark"></div>
+            <div class="fb-explain"></div>
+          </div>
+        </div>
+        
+
+        <div class="q-card" id="qcard-20" data-q="20" data-ans="A">
+          <div class="q-head">
+            <span class="q-num">20.</span>
+            <span class="q-stem">下列气体中能使湿润的红色石蕊试纸变蓝的是（3分）</span>
+          </div>
+          <div class="opts-grid">
+            
+            <label class="opt-item" data-q="20" data-letter="A">
+              <input type="radio" name="q20" value="A" class="opt-radio hidden">
+              <span class="opt-letter">A</span>
+              <span class="opt-text">NH<sub>3</sub></span>
+            </label>
+            <label class="opt-item" data-q="20" data-letter="B">
+              <input type="radio" name="q20" value="B" class="opt-radio hidden">
+              <span class="opt-letter">B</span>
+              <span class="opt-text">CO<sub>2</sub></span>
+            </label>
+            <label class="opt-item" data-q="20" data-letter="C">
+              <input type="radio" name="q20" value="C" class="opt-radio hidden">
+              <span class="opt-letter">C</span>
+              <span class="opt-text">Cl<sub>2</sub></span>
+            </label>
+            <label class="opt-item" data-q="20" data-letter="D">
+              <input type="radio" name="q20" value="D" class="opt-radio hidden">
+              <span class="opt-letter">D</span>
+              <span class="opt-text">SO<sub>2</sub></span>
+            </label>
+          </div>
+          <div class="q-feedback hidden" id="fb-20">
+            <div class="fb-mark"></div>
+            <div class="fb-explain"></div>
+          </div>
+        </div>
+        
+
+        <div class="q-card" id="qcard-21" data-q="21" data-ans="C">
+          <div class="q-head">
+            <span class="q-num">21.</span>
+            <span class="q-stem">下列各组离子在水溶液中能大量共存的是（3分）</span>
+          </div>
+          <div class="opts-grid">
+            
+            <label class="opt-item" data-q="21" data-letter="A">
+              <input type="radio" name="q21" value="A" class="opt-radio hidden">
+              <span class="opt-letter">A</span>
+              <span class="opt-text">Ba<sup>2+</sup>、Na<sup>+</sup>、SO<sub>4</sub><sup>2-</sup>、Cl<sup>-</sup></span>
+            </label>
+            <label class="opt-item" data-q="21" data-letter="B">
+              <input type="radio" name="q21" value="B" class="opt-radio hidden">
+              <span class="opt-letter">B</span>
+              <span class="opt-text">H<sup>+</sup>、Na<sup>+</sup>、Cl<sup>-</sup>、CO<sub>3</sub><sup>2-</sup></span>
+            </label>
+            <label class="opt-item" data-q="21" data-letter="C">
+              <input type="radio" name="q21" value="C" class="opt-radio hidden">
+              <span class="opt-letter">C</span>
+              <span class="opt-text">Na<sup>+</sup>、K<sup>+</sup>、NO<sub>3</sub><sup>-</sup>、Cl<sup>-</sup></span>
+            </label>
+            <label class="opt-item" data-q="21" data-letter="D">
+              <input type="radio" name="q21" value="D" class="opt-radio hidden">
+              <span class="opt-letter">D</span>
+              <span class="opt-text">Ag<sup>+</sup>、K<sup>+</sup>、Cl<sup>-</sup>、NO<sub>3</sub><sup>-</sup></span>
+            </label>
+          </div>
+          <div class="q-feedback hidden" id="fb-21">
+            <div class="fb-mark"></div>
+            <div class="fb-explain"></div>
+          </div>
+        </div>
+        
+
+        <div class="q-card" id="qcard-22" data-q="22" data-ans="C">
+          <div class="q-head">
+            <span class="q-num">22.</span>
+            <span class="q-stem">下列物质中含有醇羟基（—OH）的是（3分）</span>
+          </div>
+          <div class="opts-grid">
+            
+            <label class="opt-item" data-q="22" data-letter="A">
+              <input type="radio" name="q22" value="A" class="opt-radio hidden">
+              <span class="opt-letter">A</span>
+              <span class="opt-text">CH<sub>3</sub>CHO</span>
+            </label>
+            <label class="opt-item" data-q="22" data-letter="B">
+              <input type="radio" name="q22" value="B" class="opt-radio hidden">
+              <span class="opt-letter">B</span>
+              <span class="opt-text">CH<sub>3</sub>COOH</span>
+            </label>
+            <label class="opt-item" data-q="22" data-letter="C">
+              <input type="radio" name="q22" value="C" class="opt-radio hidden">
+              <span class="opt-letter">C</span>
+              <span class="opt-text">CH<sub>3</sub>CH<sub>2</sub>OH</span>
+            </label>
+            <label class="opt-item" data-q="22" data-letter="D">
+              <input type="radio" name="q22" value="D" class="opt-radio hidden">
+              <span class="opt-letter">D</span>
+              <span class="opt-text">CH<sub>3</sub>OCH<sub>3</sub></span>
+            </label>
+          </div>
+          <div class="q-feedback hidden" id="fb-22">
+            <div class="fb-mark"></div>
+            <div class="fb-explain"></div>
+          </div>
+        </div>
+        
+
+        <div class="q-card" id="qcard-23" data-q="23" data-ans="C">
+          <div class="q-head">
+            <span class="q-num">23.</span><span class="q-stem">下列关于原电池的说法正确的是（3分）<div class="chem-fig" style="margin:12px 0 6px 28px;max-width:380px;"><svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;background:#fafcff;border:1px solid #dbeafe;border-radius:10px;"><path d="M80,70 L80,190 Q80,200 90,200 L310,200 Q320,200 320,190 L320,70" fill="none" stroke="#475569" stroke-width="3"/><path d="M82,120 Q200,110 318,120" fill="none" stroke="#60a5fa" stroke-width="2" stroke-dasharray="3,2"/><text x="200" y="115" text-anchor="middle" font-size="12" fill="#2563eb">稀 H₂SO₄</text><rect x="130" y="60" width="18" height="120" fill="#9ca3af" stroke="#374151" stroke-width="1.5"/><text x="139" y="55" text-anchor="middle" font-size="13" font-weight="700" fill="#374151">Zn</text><rect x="252" y="60" width="18" height="120" fill="#d97706" stroke="#92400e" stroke-width="1.5"/><text x="261" y="55" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">Cu</text><path d="M139,60 L139,25 L261,25 L261,60" fill="none" stroke="#1f2937" stroke-width="2"/><circle cx="200" cy="25" r="14" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/><text x="200" y="29" text-anchor="middle" font-size="13" fill="#b45309" font-weight="700">💡</text><path d="M165,33 L235,33" stroke="#2563eb" stroke-width="1.5" fill="none" marker-end="url(#arrB)"/><text x="200" y="46" text-anchor="middle" font-size="11" fill="#2563eb">电子流向（导线）</text><path d="M248,150 Q200,170 152,150" stroke="#dc2626" stroke-width="1.2" fill="none" stroke-dasharray="4,3" marker-end="url(#arrR)"/><text x="200" y="180" text-anchor="middle" font-size="11" fill="#dc2626">H⁺ 移向正极</text><circle cx="276" cy="140" r="3" fill="#93c5fd" opacity=".7"/><circle cx="272" cy="130" r="2" fill="#93c5fd" opacity=".7"/><circle cx="280" cy="120" r="2.5" fill="#93c5fd" opacity=".7"/><defs><marker id="arrB" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/></marker><marker id="arrR" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/></marker></defs></svg><div style="font-size:12px;color:#64748b;text-align:center;margin-top:2px;margin-left:28px;">图1 锌-铜-稀硫酸原电池装置</div></div></span>
+          </div>
+          <div class="opts-grid">
+            
+            <label class="opt-item" data-q="23" data-letter="A">
+              <input type="radio" name="q23" value="A" class="opt-radio hidden">
+              <span class="opt-letter">A</span>
+              <span class="opt-text">原电池是将电能转化为化学能的装置</span>
+            </label>
+            <label class="opt-item" data-q="23" data-letter="B">
+              <input type="radio" name="q23" value="B" class="opt-radio hidden">
+              <span class="opt-letter">B</span>
+              <span class="opt-text">原电池的两极一定都是金属</span>
+            </label>
+            <label class="opt-item" data-q="23" data-letter="C">
+              <input type="radio" name="q23" value="C" class="opt-radio hidden">
+              <span class="opt-letter">C</span>
+              <span class="opt-text">原电池中负极发生氧化反应</span>
+            </label>
+            <label class="opt-item" data-q="23" data-letter="D">
+              <input type="radio" name="q23" value="D" class="opt-radio hidden">
+              <span class="opt-letter">D</span>
+              <span class="opt-text">原电池工作时，溶液中的阳离子向负极移动</span>
+            </label>
+          </div>
+          <div class="q-feedback hidden" id="fb-23">
+            <div class="fb-mark"></div>
+            <div class="fb-explain"></div>
+          </div>
+        </div>
+        
+
+        <div class="q-card" id="qcard-24" data-q="24" data-ans="B">
+          <div class="q-head">
+            <span class="q-num">24.</span>
+            <span class="q-stem">下列关于硫及其化合物的说法正确的是（3分）</span>
+          </div>
+          <div class="opts-grid">
+            
+            <label class="opt-item" data-q="24" data-letter="A">
+              <input type="radio" name="q24" value="A" class="opt-radio hidden">
+              <span class="opt-letter">A</span>
+              <span class="opt-text">硫在空气中燃烧生成SO<sub>3</sub></span>
+            </label>
+            <label class="opt-item" data-q="24" data-letter="B">
+              <input type="radio" name="q24" value="B" class="opt-radio hidden">
+              <span class="opt-letter">B</span>
+              <span class="opt-text">SO<sub>2</sub>具有漂白性，能使品红溶液褪色</span>
+            </label>
+            <label class="opt-item" data-q="24" data-letter="C">
+              <input type="radio" name="q24" value="C" class="opt-radio hidden">
+              <span class="opt-letter">C</span>
+              <span class="opt-text">稀硫酸不与铁反应</span>
+            </label>
+            <label class="opt-item" data-q="24" data-letter="D">
+              <input type="radio" name="q24" value="D" class="opt-radio hidden">
+              <span class="opt-letter">D</span>
+              <span class="opt-text">SO<sub>2</sub>是无色无味的气体</span>
+            </label>
+          </div>
+          <div class="q-feedback hidden" id="fb-24">
+            <div class="fb-mark"></div>
+            <div class="fb-explain"></div>
+          </div>
+        </div>
+        
+
+        <div class="q-card" id="qcard-25" data-q="25" data-ans="B">
+          <div class="q-head">
+            <span class="q-num">25.</span>
+            <span class="q-stem">二氧化硅（SiO<sub>2</sub>）中硅元素的化合价为（3分）</span>
+          </div>
+          <div class="opts-grid">
+            
+            <label class="opt-item" data-q="25" data-letter="A">
+              <input type="radio" name="q25" value="A" class="opt-radio hidden">
+              <span class="opt-letter">A</span>
+              <span class="opt-text">+2</span>
+            </label>
+            <label class="opt-item" data-q="25" data-letter="B">
+              <input type="radio" name="q25" value="B" class="opt-radio hidden">
+              <span class="opt-letter">B</span>
+              <span class="opt-text">+4</span>
+            </label>
+            <label class="opt-item" data-q="25" data-letter="C">
+              <input type="radio" name="q25" value="C" class="opt-radio hidden">
+              <span class="opt-letter">C</span>
+              <span class="opt-text">-2</span>
+            </label>
+            <label class="opt-item" data-q="25" data-letter="D">
+              <input type="radio" name="q25" value="D" class="opt-radio hidden">
+              <span class="opt-letter">D</span>
+              <span class="opt-text">0</span>
+            </label>
+          </div>
+          <div class="q-feedback hidden" id="fb-25">
+            <div class="fb-mark"></div>
+            <div class="fb-explain"></div>
+          </div>
+        </div>
+        
+
+        <div class="q-card" id="qcard-26" data-q="26" data-ans="C">
+          <div class="q-head">
+            <span class="q-num">26.</span>
+            <span class="q-stem">下列过程中需要吸收能量的是（3分）</span>
+          </div>
+          <div class="opts-grid">
+            
+            <label class="opt-item" data-q="26" data-letter="A">
+              <input type="radio" name="q26" value="A" class="opt-radio hidden">
+              <span class="opt-letter">A</span>
+              <span class="opt-text">H<sub>2</sub> + Cl<sub>2</sub> = 2HCl</span>
+            </label>
+            <label class="opt-item" data-q="26" data-letter="B">
+              <input type="radio" name="q26" value="B" class="opt-radio hidden">
+              <span class="opt-letter">B</span>
+              <span class="opt-text">H<sub>2</sub>O(g) 变为 H<sub>2</sub>O(l)</span>
+            </label>
+            <label class="opt-item" data-q="26" data-letter="C">
+              <input type="radio" name="q26" value="C" class="opt-radio hidden">
+              <span class="opt-letter">C</span>
+              <span class="opt-text">H<sub>2</sub> 变为 <sup>2</sup>H</span>
+            </label>
+            <label class="opt-item" data-q="26" data-letter="D">
+              <input type="radio" name="q26" value="D" class="opt-radio hidden">
+              <span class="opt-letter">D</span>
+              <span class="opt-text">稀硫酸与氢氧化钠溶液反应</span>
+            </label>
+          </div>
+          <div class="q-feedback hidden" id="fb-26">
+            <div class="fb-mark"></div>
+            <div class="fb-explain"></div>
+          </div>
+        </div>
+        
+
+        <div class="q-card" id="qcard-27" data-q="27" data-ans="A">
+          <div class="q-head">
+            <span class="q-num">27.</span>
+            <span class="q-stem">对于反应 N<sub>2</sub>(g) + 3H<sub>2</sub>(g) ⇌ 2NH<sub>3</sub>(g)，能说明反应已达到化学平衡状态的是（3分）</span>
+          </div>
+          <div class="opts-grid">
+            
+            <label class="opt-item" data-q="27" data-letter="A">
+              <input type="radio" name="q27" value="A" class="opt-radio hidden">
+              <span class="opt-letter">A</span>
+              <span class="opt-text">N<sub>2</sub>的浓度不再变化</span>
+            </label>
+            <label class="opt-item" data-q="27" data-letter="B">
+              <input type="radio" name="q27" value="B" class="opt-radio hidden">
+              <span class="opt-letter">B</span>
+              <span class="opt-text">N<sub>2</sub>完全转化为NH<sub>3</sub></span>
+            </label>
+            <label class="opt-item" data-q="27" data-letter="C">
+              <input type="radio" name="q27" value="C" class="opt-radio hidden">
+              <span class="opt-letter">C</span>
+              <span class="opt-text">正、逆反应都停止</span>
+            </label>
+            <label class="opt-item" data-q="27" data-letter="D">
+              <input type="radio" name="q27" value="D" class="opt-radio hidden">
+              <span class="opt-letter">D</span>
+              <span class="opt-text">N<sub>2</sub>、H<sub>2</sub>、NH<sub>3</sub>的浓度之比为1∶3∶2</span>
+            </label>
+          </div>
+          <div class="q-feedback hidden" id="fb-27">
+            <div class="fb-mark"></div>
+            <div class="fb-explain"></div>
+          </div>
+        </div>
+        
+
+        <div class="q-card" id="qcard-28" data-q="28" data-ans="A">
+          <div class="q-head">
+            <span class="q-num">28.</span>
+            <span class="q-stem">在2 L密闭容器中进行反应 N<sub>2</sub> + 3H<sub>2</sub> ⇌ 2NH<sub>3</sub>，0~5 min内NH<sub>3</sub>的物质的量由0增加到1 mol。用NH<sub>3</sub>表示的反应速率为（3分）</span>
+          </div>
+          <div class="opts-grid">
+            
+            <label class="opt-item" data-q="28" data-letter="A">
+              <input type="radio" name="q28" value="A" class="opt-radio hidden">
+              <span class="opt-letter">A</span>
+              <span class="opt-text">0.1 mol/(L·min)</span>
+            </label>
+            <label class="opt-item" data-q="28" data-letter="B">
+              <input type="radio" name="q28" value="B" class="opt-radio hidden">
+              <span class="opt-letter">B</span>
+              <span class="opt-text">0.2 mol/(L·min)</span>
+            </label>
+            <label class="opt-item" data-q="28" data-letter="C">
+              <input type="radio" name="q28" value="C" class="opt-radio hidden">
+              <span class="opt-letter">C</span>
+              <span class="opt-text">0.5 mol/(L·min)</span>
+            </label>
+            <label class="opt-item" data-q="28" data-letter="D">
+              <input type="radio" name="q28" value="D" class="opt-radio hidden">
+              <span class="opt-letter">D</span>
+              <span class="opt-text">1 mol/(L·min)</span>
+            </label>
+          </div>
+          <div class="q-feedback hidden" id="fb-28">
+            <div class="fb-mark"></div>
+            <div class="fb-explain"></div>
+          </div>
+        </div>
+        
+
+  <div class="section-title">第Ⅱ卷　非选择题 <span class="badge">共16分</span></div>
+  
+        <div class="q-card fill-card" id="qcard-29" data-q="29">
+          <div class="q-head">
+            <span class="q-num">29.</span>
+            <span class="q-stem">（共6空，共8分）</span>
+          </div>
+          <div class="q-stem" style="margin:6px 0 4px 0;line-height:1.7;">元素①~⑤在元素周期表中的相对位置如图1所示。已知：①为H；②为第二周期第ⅦA族元素；③为第二周期IA族元素；④为第三周期第ⅡA族元素；⑤为第三周期第ⅦA族元素。请回答：</div>
+          <div class="q-img" style="margin:8px 0;"><svg width="360" height="120" viewBox="0 0 360 120" xmlns="http://www.w3.org/2000/svg" style="border:1px solid #ccc;background:#fafafa;border-radius:6px;display:block;">
+  <rect x="0" y="0" width="360" height="120" fill="#fafafa"/>
+  <!-- 第1周期 -->
+  <g font-size="11" font-family="Arial, sans-serif" text-anchor="middle">
+    <rect x="10" y="10" width="40" height="40" fill="#e8f4fd" stroke="#1890ff" stroke-width="1"/>
+    <text x="30" y="26" font-weight="bold">H</text><text x="30" y="42" font-size="9">1</text>
+    <rect x="310" y="10" width="40" height="40" fill="#f6ffed" stroke="#52c41a" stroke-width="1"/>
+    <text x="330" y="26" font-weight="bold">He</text><text x="330" y="42" font-size="9">2</text>
+  </g>
+  <!-- 第2周期 -->
+  <g font-size="11" font-family="Arial, sans-serif" text-anchor="middle">
+    <rect x="10" y="60" width="40" height="40" fill="#fce4ec" stroke="#eb2f96" stroke-width="1"/>
+    <text x="30" y="76" font-weight="bold">Li</text><text x="30" y="92" font-size="9">3</text>
+    <rect x="60" y="60" width="40" height="40" fill="#fce4ec" stroke="#eb2f96" stroke-width="1"/>
+    <text x="80" y="76" font-weight="bold">Be</text><text x="80" y="92" font-size="9">4</text>
+    <rect x="110" y="60" width="40" height="40" fill="#e8f4fd" stroke="#1890ff" stroke-width="1"/>
+    <text x="130" y="76" font-weight="bold">B</text><text x="130" y="92" font-size="9">5</text>
+    <rect x="160" y="60" width="40" height="40" fill="#fff7e6" stroke="#fa8c16" stroke-width="1"/>
+    <text x="180" y="76" font-weight="bold">C</text><text x="180" y="92" font-size="9">6</text>
+    <rect x="210" y="60" width="40" height="40" fill="#fff7e6" stroke="#fa8c16" stroke-width="1"/>
+    <text x="230" y="76" font-weight="bold">N</text><text x="230" y="92" font-size="9">7</text>
+    <rect x="260" y="60" width="40" height="40" fill="#fff7e6" stroke="#fa8c16" stroke-width="1"/>
+    <text x="280" y="76" font-weight="bold">O</text><text x="280" y="92" font-size="9">8</text>
+    <rect x="310" y="60" width="40" height="40" fill="#fff7e6" stroke="#fa8c16" stroke-width="1"/>
+    <text x="330" y="76" font-weight="bold">F</text><text x="330" y="92" font-size="9">9</text>
+  </g>
+  <!-- 第3周期 -->
+  <g font-size="11" font-family="Arial, sans-serif" text-anchor="middle">
+    <rect x="10" y="110" width="40" height="40" fill="#fce4ec" stroke="#eb2f96" stroke-width="1"/>
+    <text x="30" y="126" font-weight="bold">Na</text><text x="30" y="142" font-size="9">11</text>
+    <rect x="60" y="110" width="40" height="40" fill="#fce4ec" stroke="#eb2f96" stroke-width="1"/>
+    <text x="80" y="126" font-weight="bold">Mg</text><text x="80" y="142" font-size="9">12</text>
+    <rect x="110" y="110" width="40" height="40" fill="#e8f4fd" stroke="#1890ff" stroke-width="1"/>
+    <text x="130" y="126" font-weight="bold">Al</text><text x="130" y="142" font-size="9">13</text>
+    <rect x="160" y="110" width="40" height="40" fill="#e8f4fd" stroke="#1890ff" stroke-width="1"/>
+    <text x="180" y="126" font-weight="bold">Si</text><text x="180" y="142" font-size="9">14</text>
+    <rect x="210" y="110" width="40" height="40" fill="#fff7e6" stroke="#fa8c16" stroke-width="1"/>
+    <text x="230" y="126" font-weight="bold">P</text><text x="230" y="142" font-size="9">15</text>
+    <rect x="260" y="110" width="40" height="40" fill="#fff7e6" stroke="#fa8c16" stroke-width="1"/>
+    <text x="280" y="126" font-weight="bold">S</text><text x="280" y="142" font-size="9">16</text>
+    <rect x="310" y="110" width="40" height="40" fill="#fff7e6" stroke="#fa8c16" stroke-width="1"/>
+    <text x="330" y="126" font-weight="bold">Cl</text><text x="330" y="142" font-size="9">17</text>
+  </g>
+  <!-- 注：Ar略 -->
+  <text x="180" y="56" font-size="10" fill="#666">图1  短周期部分元素周期表示意图（数字为原子序数）</text>
+</svg></div>
+          
+          
+            <div class="blank-row">
+              <span class="blank-label">①元素符号：</span>
+              <input type="text" class="blank-input" data-q="29" data-bid="0" data-ans="H" placeholder="请作答" autocomplete="off">
+              <span class="blank-fb" data-q="29" data-bid="0"></span>
+            </div>
+            
+            <div class="blank-row">
+              <span class="blank-label">①与③形成的最简单化合物：</span>
+              <input type="text" class="blank-input" data-q="29" data-bid="1" data-ans="HF" placeholder="请作答" autocomplete="off">
+              <span class="blank-fb" data-q="29" data-bid="1"></span>
+            </div>
+            
+            <div class="blank-row">
+              <span class="blank-label">②、④中金属性较强的（填元素符号）：</span>
+              <input type="text" class="blank-input" data-q="29" data-bid="2" data-ans="Na" placeholder="请作答" autocomplete="off">
+              <span class="blank-fb" data-q="29" data-bid="2"></span>
+            </div>
+            
+            <div class="blank-row">
+              <span class="blank-label">④与水反应的化学方程式：</span>
+              <input type="text" class="blank-input" data-q="29" data-bid="3" data-ans="2Na + 2H₂O = 2NaOH + H₂↑" placeholder="请作答" autocomplete="off">
+              <span class="blank-fb" data-q="29" data-bid="3"></span>
+            </div>
+            
+            <div class="blank-row">
+              <span class="blank-label">⑤在周期表中的位置（周期 族）：</span>
+              <input type="text" class="blank-input" data-q="29" data-bid="4" data-ans="三 ⅦA" placeholder="请作答" autocomplete="off">
+              <span class="blank-fb" data-q="29" data-bid="4"></span>
+            </div>
+            
+            <div class="blank-row">
+              <span class="blank-label">①、②、④原子半径由大到小：</span>
+              <input type="text" class="blank-input" data-q="29" data-bid="5" data-ans="Na > Li > H" placeholder="请作答" autocomplete="off">
+              <span class="blank-fb" data-q="29" data-bid="5"></span>
+            </div>
+            
+          <div class="fill-answer hidden" id="fillans-29">
+            <div class="fill-ans-title">参考答案：</div>
+            <div class="fill-ans-body"></div>
+          </div>
+        </div>
+        
+
+        <div class="q-card fill-card" id="qcard-30" data-q="30">
+          <div class="q-head">
+            <span class="q-num">30.</span>
+            <span class="q-stem">（共6空，共8分）</span>
+          </div>
+          <div class="q-stem" style="margin:6px 0 4px 0;line-height:1.7;">某同学用如图3所示装置在实验室中用MnO₂与浓盐酸加热制取Cl₂，并进行相关性质实验。请回答下列问题：</div>
+          <div class="q-img" style="margin:8px 0;"><svg width="400" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" style="border:1px solid #ccc;background:#fafafa;border-radius:6px;display:block;">
+  <!-- 铁架台 -->
+  <rect x="30" y="170" width="60" height="8" fill="#8b572a"/>
+  <rect x="55" y="30" width="4" height="145" fill="#666"/>
+  <rect x="55" y="75" width="80" height="4" fill="#666"/>
+  <!-- 酒精灯 -->
+  <ellipse cx="105" cy="160" rx="18" ry="10" fill="#d48806"/>
+  <rect x="100" y="145" width="10" height="15" fill="#8c8c8c"/>
+  <path d="M100,145 Q105,125 110,145" fill="#ff4d4f"/>
+  <!-- 圆底烧瓶 -->
+  <path d="M145,80 L145,120 A20,25 0 0,0 185,120 L185,80" fill="none" stroke="#1890ff" stroke-width="2"/>
+  <ellipse cx="165" cy="80" rx="20" ry="5" fill="none" stroke="#1890ff" stroke-width="2"/>
+  <rect x="160" y="70" width="10" height="15" fill="#8c8c8c"/>
+  <!-- 分液漏斗 -->
+  <path d="M210,30 L210,60 A12,15 0 0,0 225,80 L225,130" fill="none" stroke="#52c41a" stroke-width="2"/>
+  <ellipse cx="210" cy="30" rx="10" ry="4" fill="none" stroke="#52c41a" stroke-width="2"/>
+  <rect x="205" y="20" width="10" height="10" fill="#8c8c8c"/>
+  <!-- 导管 -->
+  <path d="M170,75 L170,60 L240,60 L240,75" fill="none" stroke="#666" stroke-width="2"/>
+  <text x="200" y="55" font-size="10" fill="#666">导气管</text>
+  <!-- 集气瓶 -->
+  <rect x="260" y="80" width="60" height="90" fill="#fff" stroke="#1890ff" stroke-width="2"/>
+  <rect x="275" y="60" width="30" height="20" fill="#fff" stroke="#1890ff" stroke-width="2"/>
+  <path d="M285,80 L285,160" fill="none" stroke="#666" stroke-width="2"/>
+  <text x="285" y="180" font-size="10" fill="#666" text-anchor="middle">向上排空气法</text>
+  <!-- 烧杯吸收尾气 -->
+  <rect x="340" y="140" width="50" height="35" fill="#fff" stroke="#1890ff" stroke-width="2"/>
+  <path d="M320,80 L320,165 L360,165" fill="none" stroke="#666" stroke-width="2"/>
+  <text x="365" y="160" font-size="10" fill="#666">NaOH溶液</text>
+  <text x="200" y="15" font-size="11" fill="#333" text-anchor="middle">图3  实验室制取气体的装置示意图</text>
+</svg></div>
+          
+          
+            <div class="blank-row">
+              <span class="blank-label">MnO<sub>₂</sub>与浓盐酸制取Cl<sub>₂</sub>的化学方程式：</span>
+              <input type="text" class="blank-input" data-q="30" data-bid="0" data-ans="MnO₂ + 4HCl(浓) △ MnCl₂ + Cl₂↑ + 2H₂O" placeholder="请作答" autocomplete="off">
+              <span class="blank-fb" data-q="30" data-bid="0"></span>
+            </div>
+            
+            <div class="blank-row">
+              <span class="blank-label">盛装浓盐酸的仪器：</span>
+              <input type="text" class="blank-input" data-q="30" data-bid="1" data-ans="分液漏斗" placeholder="请作答" autocomplete="off">
+              <span class="blank-fb" data-q="30" data-bid="1"></span>
+            </div>
+            
+            <div class="blank-row">
+              <span class="blank-label">用向上排空气法收集时导管应伸到集气瓶的：</span>
+              <input type="text" class="blank-input" data-q="30" data-bid="2" data-ans="底部" placeholder="请作答" autocomplete="off">
+              <span class="blank-fb" data-q="30" data-bid="2"></span>
+            </div>
+            
+            <div class="blank-row">
+              <span class="blank-label">多余氯气用____吸收：</span>
+              <input type="text" class="blank-input" data-q="30" data-bid="3" data-ans="氢氧化钠溶液（或NaOH溶液）" placeholder="请作答" autocomplete="off">
+              <span class="blank-fb" data-q="30" data-bid="3"></span>
+            </div>
+            
+            <div class="blank-row">
+              <span class="blank-label">Cl<sub>₂</sub>与水反应的化学方程式：</span>
+              <input type="text" class="blank-input" data-q="30" data-bid="4" data-ans="Cl₂ + H₂O = HCl + HClO" placeholder="请作答" autocomplete="off">
+              <span class="blank-fb" data-q="30" data-bid="4"></span>
+            </div>
+            
+            <div class="blank-row">
+              <span class="blank-label">次氯酸使有色布条褪色的性质：</span>
+              <input type="text" class="blank-input" data-q="30" data-bid="5" data-ans="强氧化（或漂白）" placeholder="请作答" autocomplete="off">
+              <span class="blank-fb" data-q="30" data-bid="5"></span>
+            </div>
+            
+          <div class="fill-answer hidden" id="fillans-30">
+            <div class="fill-ans-title">参考答案：</div>
+            <div class="fill-ans-body"></div>
+          </div>
+        </div>
+        
+  
+  <div style="text-align:center; margin-top:30px;">
+    <button class="btn btn-accent" style="font-size:17px; padding:13px 40px;" id="btn-submit2">✓ 提交试卷，查看成绩</button>
+  </div>
+</div>
+
+<!-- 题号导航 -->
+<button class="nav-toggle" id="nav-toggle">≡</button>
+<div class="nav-panel" id="nav-panel">
+  <div class="nav-title">题号导航</div>
+  <div class="nav-grid" id="nav-grid"></div>
+</div>
+
+<!-- 结果弹窗 -->
+<div class="result-panel hidden" id="result-panel">
+  <div class="result-card">
+    <div class="score-circle" id="score-circle">
+      <div class="score-num" id="score-num">0</div>
+      <div class="score-unit">/ 100 分</div>
+    </div>
+    <div class="result-title" id="result-title">考试结束</div>
+    <div class="result-sub" id="result-sub"></div>
+    <div class="stat-row">
+      <div class="stat-item"><div class="stat-val" id="stat-right">0</div><div class="stat-lab">选择正确</div></div>
+      <div class="stat-item"><div class="stat-val" id="stat-blank">0</div><div class="stat-lab">填空得分</div></div>
+      <div class="stat-item"><div class="stat-val" id="stat-time">0</div><div class="stat-lab">用时(分)</div></div>
+    </div>
+    <div class="result-actions">
+      <button class="btn btn-outline" id="btn-review">查看解析</button>
+      <button class="btn btn-primary" id="btn-retry">重新答题</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const PAPER = {
+  totalChoice:28,
+  choiceAns: {"1": "C", "2": "C", "3": "B", "4": "A", "5": "D", "6": "D", "7": "A", "8": "A", "9": "B", "10": "A", "11": "A", "12": "A", "13": "C", "14": "C", "15": "A", "16": "B", "17": "C", "18": "C", "19": "A", "20": "A", "21": "C", "22": "C", "23": "C", "24": "B", "25": "B", "26": "C", "27": "A", "28": "A"},
+  choiceExp: {"1": "生活污水直接排入河流会污染水体，必须处理达标后排放。", "2": "液氯是液态的氯气，属于纯净物；空气、盐酸、漂白粉均为混合物。", "3": "容量瓶不能加热；烧杯加热须垫石棉网；分液漏斗用于分液，不能用于过滤。", "4": "金刚石和石墨都是由碳元素组成的不同单质，互为同素异形体。", "5": "合金是混合物，不是纯净物。", "6": "维生素大多不能在人体内大量储存，需经常从食物中摄取。", "7": "1 mol CO₂含2N<sub>A</sub>个氧原子，A正确；1 mol Na含11N<sub>A</sub>个电子；NaCl不是气体；1 mol H₂SO₄含2N<sub>A</sub>个氢原子。", "8": "Fe³⁺遇KSCN溶液显红色，是检验Fe³⁺的特征反应。", "9": "置换反应是一种单质与一种化合物反应生成另一种单质和另一种化合物，B符合。", "10": "铁与稀盐酸反应生成Fe²⁺；CaCO₃难溶应写化学式；铜与稀硫酸不反应。", "11": "SO₂是形成酸雨的主要污染物之一。", "12": "碳的原子序数为6，质子数为6。", "13": "H₂O是共价化合物；NaCl、Na₂O是离子化合物；NaOH含离子键，属于离子化合物。", "14": "海水含大量盐分，不能直接饮用。", "15": "淀粉是天然高分子化合物；乙烯、乙醇、葡萄糖都是小分子。", "16": "乙烯含碳碳双键，能被酸性高锰酸钾溶液氧化而使其褪色。", "17": "地壳中含量最多的元素是氧；铝能与氢氧化钠反应；氧化铝熔点高，可用作耐火材料；铝制餐具不宜长时间盛放酸碱食物。", "18": "乙烯含碳碳双键，能发生加成反应。", "19": "浓硫酸具有强腐蚀性。", "20": "NH₃溶于水显碱性，能使湿润的红色石蕊试纸变蓝。", "21": "A组生成BaSO₄沉淀；B组H⁺与CO₃²⁻反应；D组生成AgCl沉淀。", "22": "乙醇（CH₃CH₂OH）含有醇羟基（—OH）。", "23": "原电池将化学能转化为电能，负极发生氧化反应；两极不一定都是金属；放电时溶液中阳离子向正极移动。", "24": "硫在空气中燃烧生成SO₂；SO₂有刺激性气味；稀硫酸能与铁反应。", "25": "设Si为x，x+(-2)×2=0，解得x=+4。", "26": "断开化学键需要吸收能量。A、D为放热反应，B为液化放热。", "27": "可逆反应达到平衡时各组分浓度保持不变；反应并未停止，也不可能完全转化；浓度比为1∶3∶2不能说明达到平衡。", "28": "Δc(NH₃)=1 mol÷2 L=0.5 mol/L，v=0.5÷5=0.1 mol/(L·min)。"},
+  fills: {"29": [{"q": "①元素符号：", "a": "H"}, {"q": "①与③形成的最简单化合物：", "a": "HF"}, {"q": "②、④中金属性较强的（填元素符号）：", "a": "Na"}, {"q": "④与水反应的化学方程式：", "a": "<sup>2</sup>Na + 2H₂O = 2NaOH + H₂↑"}, {"q": "⑤在周期表中的位置（周期 族）：", "a": "三 ⅦA"}, {"q": "①、②、④原子半径由大到小：", "a": "Na > Li > H"}], "30": [{"q": "MnO₂与浓盐酸制取Cl₂的化学方程式：", "a": "MnO₂ + 4HCl(浓) △ MnCl₂ + Cl₂↑ + 2H₂O"}, {"q": "盛装浓盐酸的仪器：", "a": "分液漏斗"}, {"q": "用向上排空气法收集时导管应伸到集气瓶的：", "a": "底部"}, {"q": "多余氯气用____吸收：", "a": "氢氧化钠溶液（或NaOH溶液）"}, {"q": "Cl₂与水反应的化学方程式：", "a": "Cl₂ + H₂O = HCl + HClO"}, {"q": "次氯酸使有色布条褪色的性质：", "a": "强氧化（或漂白）"}]}
+};
+
+// ========== 倒计时 ==========
+let timeLeft = 60*60;
+let timerStarted = false;
+let timerInterval = null;
+let submitted = false;
+let startTime = null;
+
+function formatTime(s){
+  const m = Math.floor(s/60);
+  const ss = s%60;
+  return String(m).padStart(2,'0')+':'+String(ss).padStart(2,'0');
+}
+
+function startTimer(){
+  if(timerStarted) return;
+  timerStarted = true;
+  startTime = Date.now();
+  timerInterval = setInterval(()=>{
+    timeLeft--;
+    document.getElementById('time-text').textContent = formatTime(timeLeft);
+    const box = document.getElementById('timer');
+    if(timeLeft<=300) box.classList.add('warning');
+    if(timeLeft<=0){
+      clearInterval(timerInterval);
+      submitPaper(true);
+    }
+  },1000);
+}
+
+// ========== 题号导航 ==========
+function buildNav(){
+  const grid = document.getElementById('nav-grid');
+  let html='';
+  for(let i=1;i<=30;i++){
+    html += `<button class="nav-btn" data-jump="${i}" id="nav-${i}">${i}</button>`;
+  }
+  grid.innerHTML = html;
+  grid.querySelectorAll('.nav-btn').forEach(btn=>{
+    btn.onclick = ()=>{
+      const id = btn.dataset.jump;
+      document.getElementById('qcard-'+id).scrollIntoView({behavior:'smooth',block:'center'});
+    };
+  });
+}
+
+function updateNav(){
+  for(let i=1;i<=28;i++){
+    const btn = document.getElementById('nav-'+i);
+    const sel = document.querySelector(`input[name="q${i}"]:checked`);
+    if(sel) btn.classList.add('done'); else btn.classList.remove('done');
+  }
+  for(let i=29;i<=30;i++){
+    const inputs = document.querySelectorAll(`.blank-input[data-q="${i}"]`);
+    let filled = true;
+    inputs.forEach(ip=>{ if(!ip.value.trim()) filled=false; });
+    const btn = document.getElementById('nav-'+i);
+    if(filled && inputs.length>0) btn.classList.add('done'); else btn.classList.remove('done');
+  }
+}
+
+// ========== 选项点击 ==========
+document.querySelectorAll('.opt-item').forEach(item=>{
+  item.addEventListener('click',()=>{
+    if(submitted) return;
+    if(!timerStarted) startTimer();
+    const q = item.dataset.q;
+    const letter = item.dataset.letter;
+    // 清除同题其他选中
+    document.querySelectorAll(`.opt-item[data-q="${q}"]`).forEach(o=>o.classList.remove('selected'));
+    item.classList.add('selected');
+    const radio = item.querySelector('.opt-radio');
+    radio.checked = true;
+    updateNav();
+  });
+});
+
+// 输入框启动计时
+document.querySelectorAll('.blank-input').forEach(ip=>{
+  ip.addEventListener('focus',()=>{ if(!timerStarted) startTimer(); });
+  ip.addEventListener('input',updateNav);
+});
+
+// ========== 提交判分 ==========
+function normalize(s){
+  return s.replace(/\s+/g,'').replace(/，/g,',').replace(/。/g,'.')
+    .replace(/（/g,'(').replace(/）/g,')').replace(/：/g,':')
+    .replace(/[～~]/g,'-').toLowerCase();
+}
+function matchAnswer(user, ans){
+  const u = normalize(user);
+  if(!u) return false;
+  // 支持多种写法
+  const cands = [ans];
+  // 若答案带"或"，拆分
+  if(ans.includes('（或')){
+    cands.push(ans.split('（或')[0]);
+  }
+  // 单位类兼容
+  for(const c of cands){
+    const nc = normalize(c);
+    if(u===nc) return true;
+    // 去掉单位括号内字符再比
+    const u2 = u.replace(/[\(（][^\)）]*[\)）]/g,'');
+    const nc2 = nc.replace(/[\(（][^\)）]*[\)）]/g,'');
+    if(u2 && u2===nc2) return true;
+    // 含有关键字（>50%字符匹配）
+    if(nc.length>=2 && u.includes(nc.substring(0,Math.min(nc.length,4)))) return true;
+  }
+  // 化学方程式关键字符匹配
+  if(ans.includes('=')){
+    // 取生成物/反应物中的关键字符
+    for(const kw of ['NaOH','H₂','O₂','H₂O','NaCl','Cl₂','Na₂O₂','CuSO₄','NH₃','CaCl₂','HCl','MnCl₂','Fe²⁺','Fe³⁺','KCl','O2','H2','H2O','Cl2','NH3']){
+      if(ans.includes(kw) && u.includes(kw)) return true;
+    }
+  }
+  return false;
+}
+
+function submitPaper(auto){
+  if(submitted) return;
+  submitted = true;
+  clearInterval(timerInterval);
+  
+  let choiceRight = 0;
+  // 判选择题
+  for(let i=1;i<=28;i++){
+    const sel = document.querySelector(`input[name="q${i}"]:checked`);
+    const userAns = sel ? sel.value : '';
+    const correctAns = PAPER.choiceAns[i];
+    const card = document.getElementById('qcard-'+i);
+    const fb = document.getElementById('fb-'+i);
+    const expEl = fb.querySelector('.fb-explain');
+    // 禁用选项
+    document.querySelectorAll(`.opt-item[data-q="${i}"]`).forEach(o=>o.classList.add('disabled'));
+    fb.classList.remove('hidden');
+    
+    // 标对/错
+    document.querySelectorAll(`.opt-item[data-q="${i}"]`).forEach(o=>{
+      const L = o.dataset.letter;
+      if(L===correctAns) o.classList.add('right');
+      if(L===userAns && userAns!==correctAns) o.classList.add('wrong-sel');
+    });
+    
+    if(userAns===correctAns){
+      choiceRight++;
+      card.classList.add('correct');
+      expEl.innerHTML = `<b>解析：</b>${PAPER.choiceExp[i]}`;
+    } else {
+      card.classList.add('wrong');
+      expEl.innerHTML = `<b>正确答案：${correctAns}</b><br><b>解析：</b>${PAPER.choiceExp[i]}`;
+    }
+    document.getElementById('nav-'+i).classList.remove('done');
+    document.getElementById('nav-'+i).classList.add(userAns===correctAns?'correct-n':'wrong-n');
+  }
+  
+  // 判填空：每题8分，按空平均
+  let blankScore = 0;
+  let blankBlanks = 0;
+  let blankRight = 0;
+  for(const qn of [29,30]){
+    const blanks = PAPER.fills[qn];
+    const nBlank = blanks.length;
+    const perBlank = 8/nBlank;
+    const card = document.getElementById('qcard-'+qn);
+    const ansBox = document.getElementById('fillans-'+qn);
+    let nRight=0;
+    let ansListHtml='';
+    blanks.forEach((b,idx)=>{
+      const ip = document.querySelector(`.blank-input[data-q="${qn}"][data-bid="${idx}"]`);
+      const fb = document.querySelector(`.blank-fb[data-q="${qn}"][data-bid="${idx}"]`);
+      ip.classList.add('disabled');
+      ip.disabled = true;
+      const userV = ip.value.trim();
+      const ok = matchAnswer(userV, b.a);
+      if(ok){ nRight++; ip.classList.add('ok'); fb.classList.add('ok'); }
+      else { ip.classList.add('no'); fb.classList.add('no'); fb.textContent = b.a; }
+      ansListHtml += `<div class="ans-row">${b.q} <b>${b.a}</b></div>`;
+    });
+    blankScore += nRight*perBlank;
+    blankBlanks += nBlank;
+    blankRight += nRight;
+    ansBox.querySelector('.fill-ans-body').innerHTML = ansListHtml;
+    ansBox.classList.remove('hidden');
+    if(nRight===nBlank) card.classList.add('correct');
+    else if(nRight===0) card.classList.add('wrong');
+    else card.classList.add('partial');
+  }
+  
+  const totalScore = Math.round(choiceRight*3 + blankScore);
+  const passed = totalScore>=60;
+  
+  // 用时
+  const usedSec = Math.min(3600, Math.round((Date.now()-startTime)/1000)) || (3600-timeLeft);
+  const usedMin = Math.round(usedSec/60);
+  
+  // 显示结果
+  document.getElementById('score-num').textContent = totalScore;
+  const circle = document.getElementById('score-circle');
+  circle.className = 'score-circle '+(passed?'pass':'fail');
+  document.getElementById('result-title').textContent = passed? '🎉 合格！' : '😢 未合格';
+  document.getElementById('result-sub').textContent = passed? '继续保持，加油冲刺！' : '别灰心，对照解析巩固薄弱点。';
+  document.getElementById('stat-right').textContent = choiceRight+'/28';
+  document.getElementById('stat-blank').textContent = blankScore.toFixed(1)+'/16';
+  document.getElementById('stat-time').textContent = usedMin;
+  document.getElementById('result-panel').classList.remove('hidden');
+}
+
+// ========== 重置 ==========
+function resetPaper(){
+  location.reload();
+}
+
+// ========== 按钮绑定 ==========
+document.getElementById('btn-submit').addEventListener('click',()=>{
+  if(confirm('确定要交卷吗？交卷后将无法修改答案。')) submitPaper(false);
+});
+document.getElementById('btn-submit2').addEventListener('click',()=>{
+  if(confirm('确定要交卷吗？交卷后将无法修改答案。')) submitPaper(false);
+});
+document.getElementById('btn-reset').addEventListener('click',()=>{
+  if(confirm('确定要重置试卷吗？所有作答将清空。')) resetPaper();
+});
+document.getElementById('btn-review').addEventListener('click',()=>{
+  document.getElementById('result-panel').classList.add('hidden');
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+document.getElementById('btn-retry').addEventListener('click',resetPaper);
+document.getElementById('nav-toggle').addEventListener('click',()=>{
+  document.getElementById('nav-panel').classList.toggle('show');
+});
+
+buildNav();
+</script>
+</body>
+</html>
